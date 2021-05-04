@@ -1,0 +1,20 @@
+{
+  "name": "iias_cval",
+  "version": "1.0.0",
+  "description": "Центр информационного обеспечения УдГУ\r https://lopien.github.io/iias/",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mattakushii/iias_cval.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mattakushii/iias_cval/issues"
+  },
+  "homepage": "https://github.com/Mattakushii/iias_cval#readme"
+}

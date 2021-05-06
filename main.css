@@ -43,18 +43,15 @@ body{
 }
 
 .navbar{
-  z-index: 3;
+  z-index: 15;
   position: fixed;
   overflow: auto;
   display: block;
   flex-direction: column;
-  padding: 45px 10px 0 38px;
+  padding: 30px 10px 0 38px;
   width: 230px;
   height: 100vh;
   background-color: #244BC5;
-}
-.navbar.visible{
-  margin-left: 0;
 }
 
 .navbar::-webkit-scrollbar {
@@ -74,19 +71,29 @@ body{
   color: #fff;
   font-size: 16px;
   margin-bottom: 25px;
-  vertical-align: center;
+  /* vertical-align: center; */
 }
-
-
+.navbar_item:last-child {
+  margin-bottom: 50px;
+}
+.layout-bg{
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  z-index: 11;
+}
 .navbar_news::before {
+  width: 16px;
   margin-right: 10px;
   vertical-align: middle;
   content: url('img/news.svg');
   float: left;
 }
 
-
 .navbar_user::before {
+  width: 16px;
   content: url('img/user.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -94,6 +101,7 @@ body{
 }
 
 .navbar_information::before {
+  width: 16px;
   content: url('img/information.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -101,6 +109,7 @@ body{
 }
 
 .navbar_plan::before {
+  width: 16px;
   content: url('img/plan.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -108,6 +117,7 @@ body{
 }
 
 .navbar_grants::before {
+  width: 16px;
   content: url('img/grants.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -115,6 +125,7 @@ body{
 }
 
 .navbar_rating::before {
+  width: 16px;
   content: url('img/rating.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -122,6 +133,7 @@ body{
 }
 
 .navbar_schedule::before {
+  width: 16px;
   content: url('img/schedule.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -129,6 +141,7 @@ body{
 }
 
 .navbar_appraisals::before {
+  width: 16px;
   content: url('img/appraisals.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -136,6 +149,7 @@ body{
 }
 
 .navbar_questioning::before {
+  width: 16px;
   content: url('img/questioning.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -143,6 +157,7 @@ body{
 }
 
 .navbar_works::before {
+  width: 16px;
   content: url('img/works.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -150,6 +165,7 @@ body{
 }
 
 .navbar_publications::before {
+  width: 16px;
   content: url('img/publications.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -157,6 +173,7 @@ body{
 }
 
 .navbar_practices::before {
+  width: 16px;
   content: url('img/practices.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -164,6 +181,7 @@ body{
 }
 
 .navbar_educational::before {
+  width: 16px;
   content: url('img/educational.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -171,6 +189,7 @@ body{
 }
 
 .navbar_educational::before {
+  width: 16px;
   content: url('img/educational.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -178,6 +197,7 @@ body{
 }
 
 .navbar_faq::before {
+  width: 16px;
   content: url('img/FAQ.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -185,6 +205,7 @@ body{
 }
 
 .navbar_help::before {
+  width: 16px;
   content: url('img/help.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -192,6 +213,7 @@ body{
 }
 
 .navbar_subscription::before {
+  width: 16px;
   content: url('img/subscription.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -199,6 +221,7 @@ body{
 }
 
 .navbar_requirements::before {
+  width: 16px;
   content: url('img/requirements.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -206,6 +229,7 @@ body{
 }
 
 .navbar_ebs::before {
+  width: 16px;
   content: url('img/ebs.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -213,6 +237,7 @@ body{
 }
 
 .navbar_catalog::before {
+  width: 16px;
   content: url('img/catalog.svg');
   vertical-align: middle;
   margin-right: 10px;
@@ -242,7 +267,6 @@ body{
   height: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 
 .main-student{
   margin-left: 10px;
@@ -525,9 +549,9 @@ body{
 
 @media (max-width:900px) {
   .navbar {
-    padding: 60px 10px 0 38px;
+    padding: 30px 10px 0 38px;
     margin-left: -278px;
-    transition: 1s;
+    /* transition: 1s; */
   }
   .main-info {
     margin-left: 10%;
@@ -535,6 +559,8 @@ body{
   }
   .navbar-btn{
     display: block;
+    top: 15px;
+    left: 28px;
   }
 
   .main-block {
@@ -578,7 +604,7 @@ body{
 
 .news{
   margin-left: 278px;
-  padding: 20px 30px;
+  padding: 20px 30px 20px 30px;
 }
 .news-block{
   padding-bottom: 20px;
@@ -636,3 +662,9 @@ body{
   margin-bottom: 30px;
 }
 
+@media (max-width:900px) {
+  .news{
+    margin-left: 0px;
+    padding: 70px 30px 20px 30px;
+  }
+}

@@ -88,13 +88,13 @@ body{
   width: 16px;
   margin-right: 10px;
   vertical-align: middle;
-  content: url('img/news.svg');
+  content: url('../img/news.svg');
   float: left;
 }
 
 .navbar_user::before {
   width: 16px;
-  content: url('img/user.svg');
+  content: url('../img/user.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -102,7 +102,7 @@ body{
 
 .navbar_information::before {
   width: 16px;
-  content: url('img/information.svg');
+  content: url('../img/information.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -110,7 +110,7 @@ body{
 
 .navbar_plan::before {
   width: 16px;
-  content: url('img/plan.svg');
+  content: url('../img/plan.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -118,7 +118,7 @@ body{
 
 .navbar_grants::before {
   width: 16px;
-  content: url('img/grants.svg');
+  content: url('../img/grants.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -126,7 +126,7 @@ body{
 
 .navbar_rating::before {
   width: 16px;
-  content: url('img/rating.svg');
+  content: url('../img/rating.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -134,7 +134,7 @@ body{
 
 .navbar_schedule::before {
   width: 16px;
-  content: url('img/schedule.svg');
+  content: url('../img/schedule.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -142,7 +142,7 @@ body{
 
 .navbar_appraisals::before {
   width: 16px;
-  content: url('img/appraisals.svg');
+  content: url('../img/appraisals.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -150,7 +150,7 @@ body{
 
 .navbar_questioning::before {
   width: 16px;
-  content: url('img/questioning.svg');
+  content: url('../img/questioning.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -158,7 +158,7 @@ body{
 
 .navbar_works::before {
   width: 16px;
-  content: url('img/works.svg');
+  content: url('../img/works.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -166,7 +166,7 @@ body{
 
 .navbar_publications::before {
   width: 16px;
-  content: url('img/publications.svg');
+  content: url('../img/publications.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -174,7 +174,7 @@ body{
 
 .navbar_practices::before {
   width: 16px;
-  content: url('img/practices.svg');
+  content: url('../img/practices.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -182,7 +182,7 @@ body{
 
 .navbar_educational::before {
   width: 16px;
-  content: url('img/educational.svg');
+  content: url('../img/educational.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -190,7 +190,7 @@ body{
 
 .navbar_educational::before {
   width: 16px;
-  content: url('img/educational.svg');
+  content: url('../img/educational.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -198,7 +198,7 @@ body{
 
 .navbar_faq::before {
   width: 16px;
-  content: url('img/FAQ.svg');
+  content: url('../img/FAQ.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -206,7 +206,7 @@ body{
 
 .navbar_help::before {
   width: 16px;
-  content: url('img/help.svg');
+  content: url('../img/help.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -214,7 +214,7 @@ body{
 
 .navbar_subscription::before {
   width: 16px;
-  content: url('img/subscription.svg');
+  content: url('../img/subscription.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -222,7 +222,7 @@ body{
 
 .navbar_requirements::before {
   width: 16px;
-  content: url('img/requirements.svg');
+  content: url('../img/requirements.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -230,7 +230,7 @@ body{
 
 .navbar_ebs::before {
   width: 16px;
-  content: url('img/ebs.svg');
+  content: url('../img/ebs.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;
@@ -238,7 +238,7 @@ body{
 
 .navbar_catalog::before {
   width: 16px;
-  content: url('img/catalog.svg');
+  content: url('../img/catalog.svg');
   vertical-align: middle;
   margin-right: 10px;
   float: left;

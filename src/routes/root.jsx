@@ -13,7 +13,7 @@ export const Root = () => {
             await authContext.checkIsLoggedIn().then(() => { setIsLoading(false) })
         }
         check()
-    }, [])
+    }, [authContext])
 
     return !isLoading ? !authContext.isLoggedIn ? <SignInRouter /> : <MainRouter /> : <></>
 }

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Axios from 'axios'
+import React, { useState } from 'react'
 
 import { useAuthContext } from "../../core/auth-provider"
 

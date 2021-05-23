@@ -5,10 +5,12 @@ import { Root } from "./routes/root"
 
 export const App = () => {
   return (
+    <>
     <AuthProvider>
       <BrowserRouter>
         <Root />
       </BrowserRouter>
     </AuthProvider>
+    </>
   )
 }

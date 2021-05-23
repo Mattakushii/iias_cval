@@ -1,4 +1,8 @@
 import React from 'react'
+import io from 'socket.io-client'
+
+const SOCKET_ADDRESS = "http://localhost:3001"
+const socket = io(SOCKET_ADDRESS);
 
 export const ChatScreen = () => {
     return (

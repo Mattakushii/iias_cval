@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
 
-const useSocket = require("socket.io")
 const server = require('http').Server(app)
-const io = useSocket(server)
+const io = require('socket.io')(server,{
+  cors:{
+    origin: 'http://localhost:3000',
+    method: ["GET", "POST"],
+    allowEIO3: true
+  }})
 
 const db = require("./settings/db");
 const jwt = require("jsonwebtoken");
@@ -50,7 +54,7 @@ app.get("/api/isAuth", verifyJWT, (req, res) => {
 });
 
 io.on('connection', socket => {
-  console.log("socket ready", socket)
+  console.log("socket ready", socket.id)
 })
 
 app.post("/api/login", (req, res) => {
@@ -59,12 +63,12 @@ app.post("/api/login", (req, res) => {
 
   db.query(findUser(login, password), (err, result) => {
     if (err) {
-      console.log("1")
+      console.log("Database error")
       return res.send({ err: err });
     } else 
 
     if (result.length > 0) {
-      console.log("2")
+      console.log("Login success")
       const token = jwt.sign({ id: result.id }, "zxc", { expiresIn: 240 });
       return res.json({
         isAuth: true,
@@ -73,12 +77,12 @@ app.post("/api/login", (req, res) => {
         token: token,
       });
     } else {
-      console.log("3")
+      console.log("Login auth error")
       return res.json({ isAuth: false, message: "invalid user or password" });
     }
   });
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });

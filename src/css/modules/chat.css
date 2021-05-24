@@ -1,5 +1,21 @@
-.chat__display {
-    width: 500px;
+.chat__wrapper {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    display: flex;
+    width: 1280px;
     height: 500px;
-    background-color: grey;
+
+    background-color: rgba(36, 36, 36, 0.1);
+    overflow: auto;
+}
+
+.chat__display {
+    width: 100%;
+
+}
+
+.chat__list {
+    width: 400px;
 }

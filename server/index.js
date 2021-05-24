@@ -102,6 +102,8 @@ app.post("/api/login", (req, res) => {
 
 app.get('/api/showchats', (req, res) => {
   const token = req.headers.token
+  let chatList = []
+  
   console.log(token)
 
   db.query(
@@ -109,14 +111,39 @@ app.get('/api/showchats', (req, res) => {
     (err, result) => {
       if (!err) {
         console.log('messages set')
-        console.log(result)
-        res.json(result)
+        result.map((obj, index) => {
+          chatList = [...chatList, {avatar: "https://i.pravatar.cc/50", alt: obj.id, title: obj.name, date: "none"}]
+        })
+        res.json(chatList)
       } else {
         console.log('messages not set')
         res.status(500).json({messagesSet: false, messages: "Something wrong"})
       }
     }
   )
+})
+
+app.get('/api/showmessages', (req, res) => {
+  const chatId = req.headers.chatid
+  let messageSet = []
+
+  console.log(chatId)
+
+  db.query(
+    `SELECT * FROM message WHERE chat_id = ${chatId}`,
+    (err, result) => {
+      if (!err) {
+        console.log(result)
+        result.map((obj, index) => {
+          messageSet = [...messageSet, {position: 'right', type: 'text', text: obj.message}]
+        })
+        res.send(messageSet)
+      } else {
+        console.log('messages dont load')
+      }
+    }
+  )
+
 })
 
 server.listen(PORT, () => {

@@ -1,39 +1,35 @@
-import React, { useEffect, useState } from "react";
-import Axios from 'axios';
+import React, { useEffect, useState, useContext } from "react";
+import Axios from "axios";
 import socket from "../../core/socket";
+import { ChatNav } from "./UI/chat-nav";
+import { ChatDisplay } from "./UI/chat-display";
+import { ChatContext } from "./chat-context";
+import { Input } from "react-chat-elements";
+import { Button } from 'react-chat-elements'
 
 export const ChatScreen = () => {
-  const [message, setMessage] = useState("");
-  const [chats, setChats] = useState([])
-  const [isChatting, setIsChatting] = useState()
+  const [dialog, setDialog] = useState(0);
 
   useEffect(() => {
     socket.connect();
   }, []);
 
-  useEffect(() => {
-    Axios.get("/api/showchats", {headers: {
-      "token": localStorage.getItem("token")
-    }}).then((res) => {
-      setChats(res.data)
-    })
-  }, [])
-
   return (
     <>
       <h1>Chat</h1>
-      {chats.map((chat, key) => {
-            return <p>{chat.name}</p>
-      })}
-      <section className="chat">
-        <div className="chat__display">
-        </div>
-        <textarea
-          className="chat__input"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-      </section>
+      <div className="chat__wrapper">
+        <ChatContext.Provider value={[dialog, setDialog]}>
+          <ChatNav />
+          <ChatDisplay />
+        </ChatContext.Provider>
+      </div>
+      <Input
+        placeholder="Type here..."
+        multiline={true}
+        rightButtons={
+          <Button color="white" backgroundColor="black" text="Send" />
+        }
+      />
     </>
   );
 };

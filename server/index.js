@@ -57,10 +57,46 @@ app.get("/api/isAuth", verifyJWT, (req, res) => {
 
 io.on('connection', socket => {
   console.log("socket ready", socket.id)
-})
-
-io.on('disconnect', socket => {
-  console.log(`user disconnect from chat, ${socket.id}`)
+  socket.on('sendmessage', ({token, messageSend, chatid}) => {
+    db.query(
+      `SELECT id FROM students WHERE token = "${token}"`,
+      (err, result) => {
+        if (!err) {
+          userid = result[0].id
+          db.query(
+            `INSERT INTO message (id, user_id, chat_id, message) VALUES (NULL, "${userid}", "${chatid}", "${messageSend}")`,
+            (err, result) => {
+              if (err) {
+                console.log("message send error")
+              } else {
+                console.log("message send")
+              }
+            }
+          )}
+      } 
+    )
+  })
+  
+  socket.on('showmessage', (dialog) => {
+    let messageSet = []
+  
+    console.log(dialog)
+  
+    db.query(
+      `SELECT * FROM message WHERE chat_id = ${dialog}`,
+      (err, result) => {
+        if (!err) {
+          result.map((obj, index) => {
+            messageSet = [...messageSet, {position: 'right', type: 'text', text: obj.message}]
+          })
+          console.log(messageSet)
+          socket.emit('showmessage', messageSet)
+        } else {
+          console.log('messages dont load')
+        }
+      }
+    )
+  })
 })
 
 app.post("/api/login", (req, res) => {

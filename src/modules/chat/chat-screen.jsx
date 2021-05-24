@@ -9,6 +9,18 @@ import { Button } from 'react-chat-elements'
 
 export const ChatScreen = () => {
   const [dialog, setDialog] = useState(0);
+  const [message, setMessage] = useState('')
+
+  const insertMessageUsingPOST = () => {
+    Axios.post("/api/sendmessage", 
+    {
+      token: localStorage.getItem("token"),
+      chatid: dialog,
+      message: message
+    }).then((res) => {
+      console.log("message sent")
+    })
+  }
 
   useEffect(() => {
     socket.connect();
@@ -26,8 +38,10 @@ export const ChatScreen = () => {
       <Input
         placeholder="Type here..."
         multiline={true}
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
         rightButtons={
-          <Button color="white" backgroundColor="black" text="Send" />
+          <Button color="white" backgroundColor="black" text="Send" onClick={insertMessageUsingPOST}/>
         }
       />
     </>

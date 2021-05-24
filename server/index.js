@@ -146,6 +146,43 @@ app.get('/api/showmessages', (req, res) => {
 
 })
 
+app.post('/api/sendmessage', (req, res) => {
+  const message = req.body.message
+  const chatId = req.body.chatid
+  const token = req.body.token
+  var userid = 0
+
+
+  if (chatId == 0) {
+    return res.json(
+      {
+        message: "Choose dialog"
+      }
+    )
+  }
+
+  db.query(
+    `SELECT id FROM students WHERE token = "${token}"`,
+    (err, result) => {
+      if (!err) {
+        userid = result[0].id
+        db.query(
+          `INSERT INTO message (id, user_id, chat_id, message) VALUES (NULL, "${userid}", "${chatId}", "${message}")`,
+          (err, result) => {
+            if (err) {
+              console.log("message send error")
+            } else {
+              console.log("message send")
+            }
+          }
+        )}
+    } 
+  )
+
+  console.log({message: message, chatid: chatId, token: token, userid: userid})
+
+})
+
 server.listen(PORT, () => {
   console.log("Server started on port " + PORT);
 });

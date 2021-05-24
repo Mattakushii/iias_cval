@@ -36,6 +36,7 @@ const findUser = (login, password) => {
   return `SELECT * FROM students WHERE login = "${login}" AND password = "${password}"`;
 };
 
+
 app.get("/api/students", (req, res) => {
   db.query(
     "SELECT first_name, second_name, is_auth FROM students",
@@ -50,11 +51,16 @@ app.get("/api/students", (req, res) => {
 });
 
 app.get("/api/isAuth", verifyJWT, (req, res) => {
+  console.log('Auth checked')
   res.send("Auth success");
 });
 
 io.on('connection', socket => {
   console.log("socket ready", socket.id)
+})
+
+io.on('disconnect', socket => {
+  console.log(`user disconnect from chat, ${socket.id}`)
 })
 
 app.post("/api/login", (req, res) => {
@@ -65,13 +71,24 @@ app.post("/api/login", (req, res) => {
     if (err) {
       console.log("Database error")
       return res.send({ err: err });
-    } else 
+    }
 
     if (result.length > 0) {
       console.log("Login success")
-      const token = jwt.sign({ id: result.id }, "zxc", { expiresIn: 240 });
+      const token = jwt.sign({ id: result.id }, "zxc", { expiresIn: 10000 });
+      db.query(
+        `UPDATE students SET token = "${token}" WHERE login = "${login}" AND password = "${password}"`,
+        (err, result) => {
+          if (!err) {
+            console.log("Token db update")
+          } else {
+            console.log("Token update error")
+          }
+        }
+      )
       return res.json({
         isAuth: true,
+        id: result[0].id,
         first_name: result[0].first_name,
         second_name: result[0].second_name,
         token: token,
@@ -82,6 +99,25 @@ app.post("/api/login", (req, res) => {
     }
   });
 });
+
+app.get('/api/showchats', (req, res) => {
+  const token = req.headers.token
+  console.log(token)
+
+  db.query(
+    `SELECT chats.id, chats.name FROM chats,students,chat_user WHERE students.token = "${token}" AND chat_user.user_id = students.id AND chat_user.chat_id = chats.id`,
+    (err, result) => {
+      if (!err) {
+        console.log('messages set')
+        console.log(result)
+        res.json(result)
+      } else {
+        console.log('messages not set')
+        res.status(500).json({messagesSet: false, messages: "Something wrong"})
+      }
+    }
+  )
+})
 
 server.listen(PORT, () => {
   console.log("Server started on port " + PORT);

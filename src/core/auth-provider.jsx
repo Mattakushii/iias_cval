@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         setIsLoggedIn(false)
         window.location.reload();
     }
@@ -36,6 +37,7 @@ export const AuthProvider = ({ children }) => {
         }).then((response) => {
             if (response.data.isAuth) {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("userId", response.data.id)
                 setIsLoggedIn(true)
             }
         });

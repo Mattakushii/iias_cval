@@ -1,17 +1,39 @@
-import React from 'react'
-import io from 'socket.io-client'
-
-const SOCKET_ADDRESS = "http://localhost:3001"
-const socket = io(SOCKET_ADDRESS);
+import React, { useEffect, useState } from "react";
+import Axios from 'axios';
+import socket from "../../core/socket";
 
 export const ChatScreen = () => {
-    return (
-        <>
-            <h1>Chat</h1>
-            <section className="chat">
-                <div className="chat__display"></div>
-                <textarea className="chat__input"></textarea>
-            </section>
-        </>
-    )
-}
+  const [message, setMessage] = useState("");
+  const [chats, setChats] = useState([])
+  const [isChatting, setIsChatting] = useState()
+
+  useEffect(() => {
+    socket.connect();
+  }, []);
+
+  useEffect(() => {
+    Axios.get("/api/showchats", {headers: {
+      "token": localStorage.getItem("token")
+    }}).then((res) => {
+      setChats(res.data)
+    })
+  }, [])
+
+  return (
+    <>
+      <h1>Chat</h1>
+      {chats.map((chat, key) => {
+            return <p>{chat.name}</p>
+      })}
+      <section className="chat">
+        <div className="chat__display">
+        </div>
+        <textarea
+          className="chat__input"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
+      </section>
+    </>
+  );
+};

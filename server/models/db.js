@@ -1,5 +1,7 @@
 const mysql = require("mysql");
 
+const logger = require('../models/log4js')
+
 const db = mysql.createConnection({
   host: "sql11.freesqldatabase.com",
   user: "sql11409981",
@@ -9,9 +11,9 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    return console.log("Something wrong", err);
+    return console.log("Something wrong with database", err);
   } else {
-    console.log("Let's go!");
+    logger.info("Database successeful started");
   }
 });
 

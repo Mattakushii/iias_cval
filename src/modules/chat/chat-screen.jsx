@@ -22,6 +22,7 @@ export const ChatScreen = () => {
 
   useEffect(() => {
     socket.connect();
+    return () => socket.disconnect()
   }, []);
 
   return (

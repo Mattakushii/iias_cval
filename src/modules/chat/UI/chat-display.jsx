@@ -12,7 +12,7 @@ export const ChatDisplay = () => {
 
   useEffect(() => {
     socket.emit("showmessage", dialog);
-  }, [dialog])
+  }, [])
 
   useEffect(() => {
     socket.on("showmessage", (data) => {
@@ -21,7 +21,7 @@ export const ChatDisplay = () => {
       });
       setMessages(data);
     });
-  }, [messages.lenght])
+  }, [])
 
   return (
     <>

@@ -8,20 +8,20 @@ import { ChatContext } from "../chat-context";
 
 export const ChatDisplay = () => {
   const [dialog] = useContext(ChatContext);
-  const [messagesList, setMessagesList] = useState([]);
+  const [messages, setMessages] = useState();
 
   useEffect(() => {
     socket.emit("showmessage", dialog);
-  })
+  }, [dialog])
 
   useEffect(() => {
     socket.on("showmessage", (data) => {
       data.forEach((element) => {
-        element.text = element.text;
+        element.text = <ReactMarkdown>{element.text}</ReactMarkdown>;
       });
-      setMessagesList(data);
+      setMessages(data);
     });
-  })
+  }, [messages.lenght])
 
   return (
     <>
@@ -30,7 +30,7 @@ export const ChatDisplay = () => {
         lockable={true}
         toBottomHei
         ght={"100%"}
-        dataSource={messagesList}
+        dataSource={messages}
       />
     </>
   );

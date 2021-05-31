@@ -3,6 +3,7 @@
 
 ```sh
 git clone https://github.com/Mattakushii/iias_cval.git
+git checkout develop
 cd iias_cval
 yarn
 cd server

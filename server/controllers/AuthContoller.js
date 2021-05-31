@@ -24,7 +24,7 @@ module.exports = {
       if (result.length > 0) {
         logger.info("Login success");
         const token = jwt.sign({ id: result.id }, "zxc", { expiresIn: 10000 });
-        db.query(updateToken, (err, result) => {
+        db.query(updateToken(token, login, password), (err, result) => {
           if (!err) {
             logger.info("Token db update");
           } else {

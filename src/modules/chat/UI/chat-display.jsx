@@ -12,16 +12,20 @@ export const ChatDisplay = () => {
 
   useEffect(() => {
     socket.emit("showmessage", dialog);
-  }, [])
+  },[dialog])
 
   useEffect(() => {
     socket.on("showmessage", (data) => {
       data.forEach((element) => {
-        element.text = <ReactMarkdown>{element.text}</ReactMarkdown>;
+        element.text = element.text;
       });
+      console.log("Я в сокете")
       setMessages(data);
     });
-  }, [])
+    return () => {
+      socket.off("showmessage")
+    }
+  })
 
   return (
     <>

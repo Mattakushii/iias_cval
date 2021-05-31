@@ -8,9 +8,13 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "react": "^17.0.2",
+    "react-chat-elements": "^10.15.0",
     "react-dom": "^17.0.2",
+    "react-markdown": "^6.0.2",
+    "react-native-vector-icons": "^8.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "socket.io-client": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "proxy": "http://localhost:3001",

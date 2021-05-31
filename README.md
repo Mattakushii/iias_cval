@@ -6,7 +6,7 @@ git clone https://github.com/Mattakushii/iias_cval.git
 cd iias_cval
 yarn
 cd server
-npm i
+yarn
 ```
 
 ## Для запуска реакта и сервера:
@@ -15,7 +15,7 @@ npm i
 yarn start
 //Открыть новый терминал
 cd server
-npm run server
+yarn server
 ```
 
 ## Работа с ветками:

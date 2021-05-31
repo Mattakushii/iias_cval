@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 
 const defaultValues = {
     isLoggedIn: false,
@@ -25,7 +25,9 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         setIsLoggedIn(false)
+        window.location.reload();
     }
 
     const login = async (login, password) => {
@@ -35,6 +37,7 @@ export const AuthProvider = ({ children }) => {
         }).then((response) => {
             if (response.data.isAuth) {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("userId", response.data.id)
                 setIsLoggedIn(true)
             }
         });

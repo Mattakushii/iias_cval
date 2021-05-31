@@ -5,7 +5,7 @@ const db = require("./models/db");
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
     method: ["GET", "POST"],
     allowEIO3: true,
   },
@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
       (err, result) => {
         if (!err) {
           console.log(result);
-          userid = result[0].id;
+          let userid = result[0].id;
           db.query(
             `INSERT INTO message (id, user_id, chat_id, message) VALUES (NULL, "${userid}", "${chatid}", "${message}")`,
             (err, result) => {
@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
               } else {
                 logger.info("message send");
                 db.query(
-                  `SELECT * FROM message WHERE chat_id = ${chatid}`,
+                  `SELECT students.first_name, students.second_name, message.message FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${chatid}`,
                   (err, result) => {
                     if (!err) {
                       result.map((obj, index) => {
@@ -91,6 +91,7 @@ io.on("connection", (socket) => {
                             position: "right",
                             type: "text",
                             text: obj.message,
+                            title: `${obj.first_name} ${obj.second_name}`,
                           },
                         ];
                       });
@@ -147,13 +148,13 @@ io.on("connection", (socket) => {
     logger.debug(dialog);
 
     db.query(
-      `SELECT * FROM message WHERE chat_id = ${dialog}`,
+      `SELECT students.first_name, students.second_name, message.message FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${dialog}`,
       (err, result) => {
         if (!err) {
           result.map((obj, index) => {
             messageSet = [
               ...messageSet,
-              { position: "right", type: "text", text: obj.message },
+              { position: "right", type: "text", text: obj.message, title: `${obj.first_name} ${obj.second_name}` },
             ];
           });
           // logger.debug(messageSet)

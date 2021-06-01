@@ -15,7 +15,9 @@ export const ChatScreen = () => {
     const token = localStorage.getItem("token")
     const messageSend = message
     const chatid = dialog
-    socket.emit('sendmessage', ({token, message, chatid}))
+    const date = new Date()
+    console.log(date)
+    socket.emit('sendmessage', ({token, message, chatid, date}))
     setMessage('')
   }
 

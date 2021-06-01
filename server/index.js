@@ -64,7 +64,7 @@ app.get("/api/showchats", (req, res) => {
 io.on("connection", (socket) => {
   logger.info("socket ready", socket.id);
 
-  socket.on("sendmessage", ({ token, message, chatid }) => {
+  socket.on("sendmessage", ({ token, message, chatid, date }) => {
     let messageSet = [];
 
     db.query(
@@ -74,14 +74,14 @@ io.on("connection", (socket) => {
           console.log(result);
           let userid = result[0].id;
           db.query(
-            `INSERT INTO message (id, user_id, chat_id, message) VALUES (NULL, "${userid}", "${chatid}", "${message}")`,
+            `INSERT INTO message (id, user_id, chat_id, message, date) VALUES (NULL, "${userid}", "${chatid}", "${message}", "${date}")`,
             (err, result) => {
               if (err) {
                 logger.error("message send error");
               } else {
                 logger.info("message send");
                 db.query(
-                  `SELECT students.first_name, students.second_name, message.message FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${chatid}`,
+                  `SELECT students.first_name, students.second_name, message.message, message.date FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${chatid}`,
                   (err, result) => {
                     if (!err) {
                       result.map((obj, index) => {
@@ -92,6 +92,7 @@ io.on("connection", (socket) => {
                             type: "text",
                             text: obj.message,
                             title: `${obj.first_name} ${obj.second_name}`,
+                            date: obj.date
                           },
                         ];
                       });
@@ -148,13 +149,13 @@ io.on("connection", (socket) => {
     logger.debug(dialog);
 
     db.query(
-      `SELECT students.first_name, students.second_name, message.message FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${dialog}`,
+      `SELECT students.first_name, students.second_name, message.message, message.date FROM message INNER JOIN students ON message.user_id = students.id WHERE message.chat_id = ${dialog}`,
       (err, result) => {
         if (!err) {
           result.map((obj, index) => {
             messageSet = [
               ...messageSet,
-              { position: "right", type: "text", text: obj.message, title: `${obj.first_name} ${obj.second_name}` },
+              { position: "right", type: "text", text: obj.message, title: `${obj.first_name} ${obj.second_name}`, date: obj.date },
             ];
           });
           // logger.debug(messageSet)

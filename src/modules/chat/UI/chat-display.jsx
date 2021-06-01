@@ -19,8 +19,8 @@ export const ChatDisplay = () => {
       data.forEach((element) => {
         let date = new Date(element.date)
         element.date = date
+        element.text = <ReactMarkdown>{element.text}</ReactMarkdown>
       });
-      console.log(data)
       setMessages(data);
     });
     return () => {

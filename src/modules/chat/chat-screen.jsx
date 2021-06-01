@@ -1,11 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
-import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import socket from "../../core/socket";
 import { ChatNav } from "./UI/chat-nav";
 import { ChatDisplay } from "./UI/chat-display";
 import { ChatContext } from "./chat-context";
-import { Input } from "react-chat-elements";
-import { Button } from 'react-chat-elements'
 
 export const ChatScreen = () => {
   const [dialog, setDialog] = useState(0);
@@ -13,10 +10,8 @@ export const ChatScreen = () => {
 
   const insertMessage = (e) => {
     const token = localStorage.getItem("token")
-    const messageSend = message
     const chatid = dialog
     const date = new Date()
-    console.log(date)
     socket.emit('sendmessage', ({token, message, chatid, date}))
     setMessage('')
   }
@@ -35,15 +30,9 @@ export const ChatScreen = () => {
           <ChatDisplay />
         </ChatContext.Provider>
       </div>
-      <Input
-        placeholder="Type here..."
-        multiline={true}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        rightButtons={
-          <Button color="white" backgroundColor="black" text="Send" onClick={insertMessage}/>
-        }
-      />
+      <textarea value={message} onChange={(e) => setMessage(e.target.value)}>
+      </textarea>
+      <button onClick={insertMessage}>Отправить</button>
     </>
   );
 };

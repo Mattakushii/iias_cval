@@ -17,9 +17,10 @@ export const ChatDisplay = () => {
   useEffect(() => {
     socket.on("showmessage", (data) => {
       data.forEach((element) => {
-        element.text = element.text;
+        let date = new Date(element.date)
+        element.date = date
       });
-      console.log("Я в сокете")
+      console.log(data)
       setMessages(data);
     });
     return () => {

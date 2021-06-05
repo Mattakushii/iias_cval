@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useAuthContext } from "../../core/auth-provider";
 import './style.css';
 import OpenModal from './script.js';
-import { useAuthContext } from "../../core/auth-provider"
 
 export const SignInScreen = () => {
     const [login, setLogin] = useState("Max228");
@@ -28,12 +28,12 @@ export const SignInScreen = () => {
                         <h3 className="modal-title">Здравствуйте!<br />Чтобы войти в систему введите логин и пароль</h3>
                         <form className="modal-form" >
                             <input className="modal-input" type="text" placeholder="Логин" 
-                                required 
-                                value={login} 
+                                required
+                                value={login}
                                 onChange={(e) => setLogin(e.target.value)}
                             ></input>
-                            <input className="modal-input" type="password" placeholder="Пароль" 
-                                required 
+                            <input className="modal-input" type="password" placeholder="Пароль"
+                                required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             ></input>

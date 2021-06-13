@@ -24,17 +24,6 @@ export const Header = () => {
           });
   }, []);
 
-  // const checkIsLoggedIn = async () => {
-  //   await Axios.get("/api/isAuth", {
-  //       headers: {
-  //           "x-access-token": localStorage.getItem("token")
-  //       },
-  //   }).then((response) => {
-  //       response.data.isAuth ? setIsLoggedIn(true) : setIsLoggedIn(false)
-  //   })
-  // }
-
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);

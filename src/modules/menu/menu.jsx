@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {HideMenu} from "./showMenu.js";
-import './menu.css';
 
 export const Menu = () => (
   <div className="menu">

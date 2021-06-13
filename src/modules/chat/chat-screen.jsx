@@ -5,7 +5,6 @@ import { ChatDisplay } from "./UI/chat-display";
 import { ChatContext } from "./chat-context";
 import { Menu } from "../menu/menu";
 import { Header } from "../header/header";
-import "./chat.css"
 
 export const ChatScreen = () => {
   const [dialog, setDialog] = useState(0);
@@ -28,8 +27,8 @@ export const ChatScreen = () => {
     <>
       <Menu/>
       <Header/>
-      <div className="messages">
 
+      <div className="messages">
           <ChatContext.Provider value={[dialog, setDialog]}>
             <div className="messages-name">
               <input className="messages-search" type="text" placeholder="Поиск" />
@@ -38,10 +37,9 @@ export const ChatScreen = () => {
               </div>
             </div>
 
-
             <div className="messages-message">
               <div className="message-input-line">
-                <div className="messages-dialog">
+              <div id="wrapp" className="messages-dialog">
                   <ChatDisplay />
                 </div>
                 <div className="message-sending">
@@ -49,7 +47,7 @@ export const ChatScreen = () => {
                   <label htmlFor="message-file" className="message-file-button">
                     <img src="/img/plus.svg" alt="" />
                   </label>
-                  <input value={message} onChange={(e) => setMessage(e.target.value)} className="message-input" type="text" />
+                  <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="message-input" placeholder="Ваше сообщение" type="text" />
                   <button onClick={insertMessage} className="message-send">
                     <img src="/img/sent.svg" alt="" />
                   </button>

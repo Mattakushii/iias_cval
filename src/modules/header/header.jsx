@@ -4,7 +4,6 @@ import { useAuthContext } from '../../core/auth-provider';
 import { Link } from "react-router-dom";
 import { ShowMenu } from "../menu/showMenu";
 import Modal from 'react-modal';
-import "./header.css";
 
 export const Header = () => {
   const authContext = useAuthContext()
@@ -48,8 +47,8 @@ export const Header = () => {
               <div>
                 {studentsData && studentsData.map((item, i) => (
                     <div key={i}>
-                        <h2>{item.first_name} {item.second_name}</h2>
-                        {!item.is_auth ? <p>В сети</p> : <p>Не в сети</p>}
+                    <p className="main-student-first_name">{item.first_name} {item.second_name}</p>
+                        {!item.is_auth ? <p className="main-student-online">В сети</p> : <p className="main-student-offline">Не в сети</p>}
                     </div>
                 ))}
               </div>

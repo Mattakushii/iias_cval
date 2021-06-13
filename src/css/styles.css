@@ -1,2 +1,16 @@
 @import url(./modules/index.css);
 @import url(./modules/chat.css);
+@import url(./modules/header.css);
+@import url(./modules/main.css);
+@import url(./modules/menu.css);
+@import url(./modules/sign_in.css);
+
+@import url(./modules/appraisals.css);
+@import url(./modules/general_information.css);
+@import url(./modules/grants.css);
+@import url(./modules/news.css);
+@import url(./modules/personal_information.css);
+@import url(./modules/plan.css);
+@import url(./modules/questioning.css);
+@import url(./modules/rating.css);
+@import url(./modules/schedule.css);

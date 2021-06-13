@@ -3,7 +3,6 @@ import { Doughnut } from 'react-chartjs-2';
 import { AddTask, DeleteTask, ShowTask, HideTask } from './task';
 import { Menu } from "../menu/menu";
 import { Header } from "../header/header"; 
-import "./main.css";
 
 export const MainScreen = () => {
 
@@ -40,16 +39,6 @@ const options = {
         <>
             <Menu />
             <Header />
-            {/* <div className="header-block">
-                <h1>MainScreen</h1>
-                {studentsData && studentsData.map((item, i) => (
-                    <div key={i}>
-                        <h2>{item.first_name} {item.second_name}</h2>
-                        {!item.is_auth ? <p>В сети</p> : <p>Не в сети</p>}
-                    </div>
-                ))}
-                <button onClick={() => { authContext.logout() }}>logout</button>
-            </div> */}
             <div className="main-block" >
                 <div className="main-block-row">
                     <div className="main-tasks">

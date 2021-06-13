@@ -60,11 +60,28 @@
   justify-content: flex-start;
 }
 
+.main-student-first_name {
+  display: inline-block;
+}
+
+.main-student-online {
+  display: inline-block;
+  margin-left: 10px;
+  color: #21C0B6;
+}
+
+.main-student-offline {
+  display: inline-block;
+  margin-left: 10px;
+  color: red;
+}
+
 .main-info-link {
   text-decoration: none;
 }
+
 .main-student-info {
-  color:#000;
+  color: #000;
   flex-direction: column;
   margin-left: 10px;
 }
@@ -127,7 +144,7 @@
   padding: 30px;
 }
 
-.modal-setting-title{
+.modal-setting-title {
   color: #000;
   font-size: 25px;
   line-height: 1.6;
@@ -138,6 +155,7 @@
   .header-block {
     padding: 0px 20px 20px 20px;
   }
+
   .student-info {
     margin-top: 70px;
     margin-left: 5%;
@@ -148,6 +166,7 @@
     padding: 20px;
     transition: 2s;
   }
+
   .navbar-btn {
     display: block;
     top: 15px;

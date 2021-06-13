@@ -11,7 +11,11 @@ export const Header = () => {
   const [studentsData, setStudentsData] = useState([])
 
   useEffect(() => {
-      Axios.get("/api/students")
+      Axios.get("/api/student", {
+        headers: {
+          "id": localStorage.getItem("userId")
+        }
+      }) 
           .then((res) => {
               setStudentsData(res.data)
           })
@@ -19,6 +23,17 @@ export const Header = () => {
               throw new Error(err.message)
           });
   }, []);
+
+  // const checkIsLoggedIn = async () => {
+  //   await Axios.get("/api/isAuth", {
+  //       headers: {
+  //           "x-access-token": localStorage.getItem("token")
+  //       },
+  //   }).then((response) => {
+  //       response.data.isAuth ? setIsLoggedIn(true) : setIsLoggedIn(false)
+  //   })
+  // }
+
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {

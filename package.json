@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "chart.js": "^3.3.2",
     "react": "^17.0.2",
     "react-chat-elements": "^10.15.0",
     "react-dom": "^17.0.2",
@@ -41,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-chartjs-2": "^3.0.3",
+    "react-modal": "^3.14.2"
   }
 }

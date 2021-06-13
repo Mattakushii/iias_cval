@@ -6,14 +6,10 @@
 
 .main-bg {
   -moz-background-size: 100%;
-  /* Firefox 3.6+ */
   -webkit-background-size: 100%;
-  /* Safari 3.1+ и Chrome 4.0+ */
   -o-background-size: 100%;
-  /* Opera 9.6+ */
   background-size: 100%;
-  /* Современные браузеры */
-  /* background-image: url('../../img/bg.svg'); */
+  background-image: url('../../img/bg.svg');
   background-color: #21C0B6;
   background-repeat: no-repeat;
   width: 100%;
@@ -34,7 +30,7 @@
   float: right;
   margin-right: 33px !important;
   font-size: 14px;
-  display: inline-block;
+  display: block;
   color: #fff;
 }
 
@@ -44,7 +40,7 @@
   float: right;
   margin-right: 31px !important;
   font-size: 14px;
-  display: inline-block;
+  display: block;
   color: #fff;
 }
 
@@ -67,18 +63,13 @@
 /*  модальное окно  */
 
 .modal {
-  display: none;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
+  display: block;
 }
 
 .modal-bg {
+  position: fixed;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  height: 100%;
-  width: 100%;
-  z-index: 2;
 }
 
 .modal-content {

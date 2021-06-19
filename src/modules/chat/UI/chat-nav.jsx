@@ -20,7 +20,7 @@ export const ChatNav = () => {
 
     return (
         <ChatList
-            className='chat__list'
+            // className='chat__list'
             dataSource={chats}
             onClick={(e) => setDialog(e.alt)}
         />

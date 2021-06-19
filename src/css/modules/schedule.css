@@ -1,0 +1,53 @@
+.shedule-last-child {
+  border-width: 1px 0px 1px 1px;
+}
+
+.shedule{
+  padding: 20px 30px 20px 298px;
+  min-width: 602px;
+}
+
+.shedule-info{
+  overflow: auto;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  padding: 10px 0px;
+  margin-bottom: 6px;
+  margin-left: 2%;
+  width: 96%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.semester {
+  text-decoration: none;
+  padding: 2px;
+  display: flex;
+}
+
+.semesters {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-bottom: 10px;
+}
+
+.semesters_title {
+  display: flex;
+  margin-left: 3%;
+  padding-top: 12px;
+  padding-right: 10px;
+}
+
+@media (max-width:900px) {
+  .shedule {
+    min-width: 600px;
+    padding: 0px 30px 20px 30px;
+  }
+}
+
+@media (max-width:600px) {
+  .shedule {
+    padding: 0px 10px 20px 10px;
+    min-width: 300px;
+  }
+}

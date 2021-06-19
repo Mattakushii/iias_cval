@@ -1,0 +1,35 @@
+
+.general-last-child {
+  border-width: 1px 0px 1px 0px;
+}
+
+.general_information {
+  padding: 20px 30px 20px 298px;
+  min-width: 602px;
+}
+
+.general_information-info {
+  overflow: auto;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  padding: 10px 0px;
+  margin-bottom: 6px;
+  margin-left: 2%;
+  width: 96%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width:900px) {
+  .general_information {
+    min-width: 600px;
+    padding: 20px 30px 20px 30px;
+  }
+}
+
+@media (max-width:600px) {
+  .general_information {
+    padding: 0px 10px 20px 10px;
+    min-width: 300px;
+  }
+}

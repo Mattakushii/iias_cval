@@ -3,8 +3,8 @@ import { useAuthContext } from "../../core/auth-provider";
 import Modal from 'react-modal';
 
 export const SignInScreen = () => {
-    const [login, setLogin] = useState("Max228");
-    const [password, setPassword] = useState("1337");
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
     const authContext = useAuthContext()
 
     const [open, setOpen] = React.useState(false);
